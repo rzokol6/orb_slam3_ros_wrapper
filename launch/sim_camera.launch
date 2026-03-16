@@ -1,6 +1,11 @@
 <launch>
+
+
+    <arg name="use_sim_time" default="true"/>
+
+    <param name="/use_sim_time" value="$(arg use_sim_time)"/>
+
     <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono" output="screen">
-        <param name="use_sim_time" type="bool" value="false" />
         <!-- for EuRoC dataset -->
 
         <!-- Parameters for original ORB-SLAM3 -->
