@@ -26,14 +26,25 @@ Camera.fps: 30.0
 Camera.RGB: 1
 
 #--------------------------------------------------------------------------------------------
-# ORB Parameters
+# ORB Parameters (tuned for flat indoor textures)
 #--------------------------------------------------------------------------------------------
 
-ORBextractor.nFeatures: 1200
-ORBextractor.scaleFactor: 1.2
-ORBextractor.nLevels: 8
-ORBextractor.iniThFAST: 20
-ORBextractor.minThFAST: 7
+# Maximum number of ORB features to extract per frame
+ORBextractor.nFeatures: 2200       # slightly higher than default
+
+# Pyramid scale factor
+ORBextractor.scaleFactor: 1.1      # finer scale steps, helps catch weak features
+
+# Number of pyramid levels
+ORBextractor.nLevels: 9            # more levels, captures smaller corners
+
+# FAST thresholds
+ORBextractor.iniThFAST: 7          # initial threshold, lower = more sensitive
+ORBextractor.minThFAST: 3          # minimum threshold, allows detection in very flat areas
+
+# Optional: cap max features per level (not in original ORB-SLAM3 yaml)
+# This is advanced; usually not needed unless CPU spikes
+#ORBextractor.nFeaturesPerLevel: [800, 600, 400, 300, 100, 50, 30, 20, 10]
 
 #--------------------------------------------------------------------------------------------
 # Viewer
